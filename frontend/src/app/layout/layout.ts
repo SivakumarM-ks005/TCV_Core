@@ -1,11 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { Header } from '../common/header/header';
+import { Footer } from '../common/footer/footer';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { Sidebar } from '../common/sidebar/sidebar';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
-  imports: [],
+  imports: [ Header, Footer, MatSidenavModule, Sidebar, RouterOutlet],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })
 export class Layout {
+opened = false;
 
+constructor( private breakPointService : BreakpointObserver){
+  // function is using show hide in mobile and web view
+  this.breakPointService.observe(['(min-width:768px']).subscribe( results=>{
+    this.opened = results.matches
+  })
+}
 }

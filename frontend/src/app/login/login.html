@@ -1,0 +1,32 @@
+<div class="login-page">
+
+    <form [formGroup]="loginForm">
+        <mat-card>
+    <mat-card-header>
+        <h2 class="mb-0 text-center">Welcome, TCV User!</h2>
+        <p>Please log in</p>
+    </mat-card-header>
+    <mat-card-content>
+      <app-input-form-field 
+      [label]="'User Name'"
+      [classLabel]="'form-label'"
+      [inputClass]="'form-control'"
+      [type]="'text'"
+      [formControl]="$any(loginForm.controls['userName'])"
+      ></app-input-form-field>
+       <app-input-form-field 
+      [label]="'Password'"
+      [classLabel]="'form-label'"
+      [inputClass]="'form-control'"
+      [type]="'password'"
+      [formControl]="$any(loginForm.controls['userName'])"
+      ></app-input-form-field>
+   
+    </mat-card-content>
+     <mat-card-footer class="example-card-footer">
+      <button matButton="filled">Login</button>
+  </mat-card-footer>
+</mat-card>
+</form>
+
+</div>

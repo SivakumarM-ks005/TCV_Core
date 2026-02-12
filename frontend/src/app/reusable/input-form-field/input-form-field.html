@@ -1,0 +1,7 @@
+ <mat-form-field appearance="outline" floatLabel="always" style="width: 100%;" >
+    <mat-label>{{ label | titlecase }}</mat-label>
+    <input matInput placeholder="" type="{{type}}" [formControl]="control">
+     <mat-error class="error-message" *ngIf="control.touched && control.invalid && control?.errors?.['required']">
+        Please enter {{ label }}
+     </mat-error>
+  </mat-form-field>

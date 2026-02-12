@@ -1,1 +1,12 @@
-<p>header works!</p>
+<mat-toolbar>
+  <span>TCV</span>
+    <button matIconButton (click)="toggleSidebar.emit()" class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="mid-spacer"></span>
+ <button matButton [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Signup</button>
+  <button mat-menu-item>Logout</button>
+</mat-menu>
+</mat-toolbar>
