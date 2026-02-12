@@ -1,0 +1,7 @@
+1. Expand and Collapse the  side bar 
+    header.html
+        (click)="toggleSidebar.emit()" 
+    header.ts
+        @Output() toggleSidebar = new EventEmitter<void>();
+    Layout.html
+        (toggleSidebar)="sidenav.toggle()"

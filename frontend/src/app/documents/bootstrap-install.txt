@@ -1,0 +1,14 @@
+npm install bootstrap
+
+include in angular json
+"styles": [
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.scss"
+]
+
+npm install @popperjs/core
+include in angular json
+"scripts": [
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+npm install @angular/animations

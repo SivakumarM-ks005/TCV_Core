@@ -1,0 +1,25 @@
+Create environment folder
+
+ng g environment
+-----------------
+add in environment
+{
+    production:false, apiUrl='local......'
+}
+Create interface folder and creae uesr-interface
+-----------------------------------=--------------------
+export  interface loginData{
+    userName: string,
+    password: string
+}
+create service folder and create user(login) service in 
+-----------------------------------=--------------------
+ng g s login-services
+import environment into it
+add httpClient
+Create login() service function
+
+created a reusale components 
+-----------------------------------=--------------------
+input and select components
+just look the code in component

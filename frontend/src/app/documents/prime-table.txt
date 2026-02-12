@@ -1,0 +1,135 @@
+import { Component, ViewChild } from '@angular/core';
+import { MatIcon } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltip } from '@angular/material/tooltip';
+import { Table, TableModule } from 'primeng/table';
+@Component({
+  selector: 'app-stage-list',
+  imports: [ MatMenuModule, MatIcon, TableModule, MatTooltip,],
+  templateUrl: './stage-list.component.html',
+  styleUrl: './stage-list.component.scss'
+})
+export class StageListComponent {
+    cols: any[];
+    allColumns: any[] = new Array<any>();
+  allColumnsTypes: any[] = new Array<any>();
+  @ViewChild('dt') dt: Table;
+  ngOnInit():void{
+     this.cols = [
+      // { field: 'serial', header: 'Serial', sortfield: true, toolTip: 'Serial', checked: true, id: "serialId" },
+      { field: 'userName', header: 'User ID', sortfield: true, toolTip: 'User ID', checked: true, id: "userId" },
+      { field: 'fullName', header: 'Full Name', sortfield: true, toolTip: 'Full Name', checked: true, id: "fullName" },
+      { field: 'emailId', header: 'Email Id', sortfield: true, toolTip: 'Email Id', checked: true, id: "emailId" },
+      { field: 'userType', header: 'User Type', style: { width: '100px' }, sortfield: true, toolTip: 'User Type', checked: true, id: "userType" },
+      { field: 'Status', header: 'Status', sortfield: true, toolTip: 'Status', checked: true, id: "StatusId" },
+    ];
+    this.allColumns = JSON.parse(JSON.stringify(this.cols?.filter((item: any) => item.checked)));
+  }
+    applyFilter($event: any, field: string, matchMode: string) {
+    let value = ($event.target as HTMLInputElement)?.value;
+    this.dt.filter(value, field, matchMode);
+  }
+  users=[];
+}
+
+
+<div class="content-container p-1">
+     <div class="bread-crumbs">
+        <h2 class="page-title"><i class="fa fa-dot-circle-o me-2" aria-hidden="true"></i>PMS Admin <i
+                class="fa fa-long-arrow-right " aria-hidden="true"></i> User Management</h2>
+    </div>
+    <div class="content-box">
+        <div class="widget-box">
+            <h5 class="widget-title pt-4 pb-4 d-flex justify-content-between"> Stage List
+                <button class="header-level-btn-blue" matTooltip="Create User" ><i
+                        class="fa fa-plus pe-2" aria-hidden="true"></i>New Stage</button>
+            </h5>
+              <div class="widget-content">
+               <div class="prime-table">
+                  <p-table [value]="users" [columns]="allColumns" [paginator]="true" [scrollable]="true"
+            paginatorDropdownAppendTo="body" selectionMode="single" #dt [rows]="10" [resizableColumns]="true"
+            [reorderableColumns]="true" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+            class="kryaDatatable" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                   <th>Serial #</th>
+                @for (col of columns; track col) {
+                <th id={{col.id}} [pSortableColumn]="col.field">
+                  <span [matTooltip]="col.toolTip">
+                    {{col.header}}
+                  </span>
+                  @if (col.sortfield) {
+                  <p-sortIcon [field]="col.field"></p-sortIcon>
+                  }
+                </th>
+                }
+                <th style="width: 80px;" id="actionCOl">Action</th>
+              </tr>
+               <tr>
+                <th></th>
+                                @for (col of columns; track col) {
+                                <th>
+                                    <input pInputText type="text" placeholder="Search {{col.header}}"
+                                        (input)="applyFilter($event, col.field, 'contains')">
+
+                                </th>
+                                }
+                                <th></th>
+                            </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-empDetails let-columns="columns" let-rowIndex="rowIndex" >
+              <tr>
+                 <td>{{ rowIndex +1 }}</td>
+                @for (col of columns; track col) {
+                   
+                <td>
+                  <span>
+                    @switch (col.field) {
+                    @case ('fullName') {
+                    {{ empDetails.lastName && empDetails.firstName
+                    ? empDetails.lastName + ', ' + empDetails.firstName
+                    : (empDetails.lastName || empDetails.firstName || 'N/A') }}
+                    }
+                    @case ('userType') {
+                    {{ empDetails.userType === 92 ? 'Employee' : 'Consultant' }}
+                    }
+                    @case ('Status') {
+                    {{ empDetails.activeFlag ? 'Active' : 'Inactive' }}
+                    }
+                    @default {
+                    <span>
+                        {{empDetails[col.field]}}
+                    </span>
+                    }
+                    }
+                  </span>
+                </td>
+                }
+                <td>
+                  <div> <a class="d-flex align-items-center" [matMenuTriggerFor]="menu"><span>Action</span>
+                      <mat-icon class="material-icons">arrow_drop_down</mat-icon>
+                    </a>
+                    <mat-menu #menu="matMenu">
+                      <button mat-menu-item class="menu-hight"  > Edit</button>
+                    </mat-menu>
+                  </div>
+                </td>
+              </tr>
+            </ng-template>
+             <ng-template pTemplate="emptymessage" let-columns>
+                                <tr>
+                                    <td [attr.colspan]="columns.length+1">
+                                        <div class="emptyMessage">
+                                            No records found
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+          </p-table>
+               </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
