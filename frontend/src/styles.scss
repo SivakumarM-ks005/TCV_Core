@@ -209,6 +209,7 @@ body {
     text-align: center;
     border-radius: 5px !important;
     background-color: var(--bs-white);
+    box-shadow: 0px 8px 8px var(--bs-dark);
   }
 
   .mat-mdc-card-header {
@@ -229,4 +230,29 @@ body {
       margin-bottom: 20px;
     }
   }
+}
+
+// --------------- form fields -------------
+.mat-mdc-form-field{
+
+  .mdc-text-field--outlined {
+  padding:0 12px  !important;
+  .mat-mdc-form-field-infix{
+    padding: 12px 0 !important;
+    min-height: 30px !important
+  }  
+}
+.mat-mdc-form-field-error-wrapper {
+  padding: 0 4px !important;
+}
+}
+
+
+
+// --------------- Grid value -------------
+
+.grid-1-col {
+  display: grid;
+  grid-template-columns:  minmax(300px, 1fr);
+  gap:10px;
 }

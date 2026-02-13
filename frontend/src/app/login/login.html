@@ -7,6 +7,7 @@
         <p>Please log in</p>
     </mat-card-header>
     <mat-card-content>
+        <div class="grid-1-col">
       <app-input-form-field 
       [label]="'User Name'"
       [classLabel]="'form-label'"
@@ -21,7 +22,7 @@
       [type]="'password'"
       [formControl]="$any(loginForm.controls['userName'])"
       ></app-input-form-field>
-   
+   </div>
     </mat-card-content>
      <mat-card-footer class="example-card-footer">
       <button matButton="filled">Login</button>
