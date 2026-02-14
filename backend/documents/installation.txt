@@ -62,3 +62,25 @@ connection.connect((err)=>{
 });
 
 module.exports = connection;
+
+9. create routes folder
+    create file userRouter.js
+
+const express = require('express');
+
+module.exports = userRouter;
+
+then need to  import into index.js
+const userRoute = require('./routes/userRouter')
+app.use('/user', userRoute);
+
+10. Create login api
+npm i jsonwentoken  (jwtoken)
+npm i nodemailer
+
+11. npm i crypto
+enter in command prompt 
+to Generate decript and encript the token
+
+node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+use to generat the token add into .env file
