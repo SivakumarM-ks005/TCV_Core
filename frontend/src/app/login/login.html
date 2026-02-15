@@ -20,12 +20,13 @@
       [classLabel]="'form-label'"
       [inputClass]="'form-control'"
       [type]="'password'"
-      [formControl]="$any(loginForm.controls['userName'])"
+      [formControl]="$any(loginForm.controls['password'])"
       ></app-input-form-field>
+      {{responseMessage}}
    </div>
     </mat-card-content>
      <mat-card-footer class="example-card-footer">
-      <button matButton="filled">Login</button>
+      <button matButton="filled" (click)="onLogin()">Login</button>
   </mat-card-footer>
 </mat-card>
 </form>

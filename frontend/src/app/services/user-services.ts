@@ -11,8 +11,8 @@ export class UserServices {
 
   constructor( private http: HttpClient){}
 
-  login( loginObj : loginData){
-    this.http.post(`${this.url}/user/login`, DataTransfer,{
+  login( data: loginData){
+   return this.http.post(`${this.url}/user/login`, data,{
       headers: new HttpHeaders().set('content-type', "application/json")
     })
   }
