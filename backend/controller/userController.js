@@ -22,6 +22,7 @@ const login = async (req, res) => {
                 const accessToken = jwt.sign(response, process.env.ACCESS_TOKEN, { expiresIn: '8h' })
                 console.log('test');
                 return res.status(200).json({
+                    result: true,
                     token: accessToken,
                     message: "Logged in"
                 })

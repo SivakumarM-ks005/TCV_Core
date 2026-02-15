@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class Login {
 
   loginForm:any= FormGroup;
-  responseMessage! : string;
+  responseMessage : string='';
   router = inject(Router)
 
  constructor( 
@@ -44,9 +44,10 @@ export class Login {
     password: formData.password
   }
   this.userService.login(data).subscribe((response:any)=>{
-    console.log("console", response);
-    if(response.token){
+    console.log(response.result);
+    if(response.result){
       this.router.navigateByUrl('/dashboard');
+      localStorage.setItem("token", response.token);
     }else {
      this.responseMessage  = response.message;
     }

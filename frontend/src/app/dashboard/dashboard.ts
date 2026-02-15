@@ -8,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class Dashboard {
 
+  getAll(){
+    debugger
+    console.log("test");
+  }
+
+  ngOninit(){
+    this.getAll();
+  }
 }

@@ -85,5 +85,8 @@ to Generate decript and encript the token
 node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
 use to generat the token add into .env file
 
+front end
 12.Create interceptor for login token access
 ng g interceptor custom
+
+add provider in app.config
