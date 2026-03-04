@@ -1,13 +1,13 @@
 import { DialogRef } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog, MatDialogActions, MatDialogModule } from '@angular/material/dialog';
 import { InputFormField } from '../../reusable/input-form-field/input-form-field';
 import { globalConstants } from '../../services/global-constants';
 
 @Component({
   selector: 'app-change-password',
-  imports: [ MatDialogActions, MatDialogModule, InputFormField, ReactiveFormsModule],
+  imports: [ MatDialogActions, MatDialogModule,InputFormField,  ReactiveFormsModule],
   templateUrl: './change-password.html',
   styleUrl: './change-password.scss',
 })
@@ -23,6 +23,11 @@ export class ChangePassword {
       oldPassword:  ['',[Validators.required]],
       newPassword: ['', [Validators.required, Validators.pattern(globalConstants.passwordRegex)],],
        confirmPassword: ['', [Validators.required, Validators.pattern(globalConstants.passwordRegex)],]
+    },{
+      Validators : this.passwordMatchValidator
     })
+  }
+  passwordMatchValidator(control:AbstractControl){
+    return control.get('newPassword')?.value === control.get('confirmPassword')?.value? null : {mismatch : true}
   }
 }
