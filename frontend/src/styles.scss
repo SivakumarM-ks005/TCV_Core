@@ -292,6 +292,7 @@ body {
     padding: 20px;
     font-size: 18px !important;
     text-shadow: 1px 1px 15px #ffffff;
+
     &::before {
       display: none;
     }
@@ -300,18 +301,22 @@ body {
   .mat-mdc-dialog-surface {
     border-radius: 10px !important;
   }
-  .mat-mdc-dialog-actions { 
+
+  .mat-mdc-dialog-actions {
     color: var(--bs-white);
     flex-wrap: nowrap !important;
     justify-content: space-between;
-   min-height: 20px !important;
-    padding:20px !important;
-    &::after, &::before{
+    min-height: 20px !important;
+    padding: 20px !important;
+
+    &::after,
+    &::before {
       display: none !important;
     }
   }
-  
+
 }
+
 // --------------- Action area -------------
 
 .action-footer {
@@ -323,25 +328,38 @@ body {
   align-items: center;
   padding: 20px;
 }
+
 // ---------------button generic style -------------
 
- button {
-      font-size: 1rem;
-      min-width: 150px !important;
-      padding: 8px 16px;
-      border-radius: 5px !important;
-      border: 0;
-      box-shadow: none;
-      outline: 0;
-      color: var(--bs-white);
-    }
+button {
+  font-size: 1rem;
+  min-width: 150px !important;
+  padding: 8px 16px;
+  border-radius: 5px !important;
+  border: 0;
+  box-shadow: none;
+  outline: 0;
+  color: var(--bs-white);
+}
+
 .btn-no {
-      background-color: var(--bs-gray);
-    }
-     .btn-yes {
-      background-color: var(--bs-primary);
-    }
-    
-    .btn-disabled {
-      opacity: .5;
-    }
+  background-color: var(--bs-gray);
+}
+
+.btn-yes {
+  background-color: var(--bs-primary);
+}
+
+.btn-disabled {
+  opacity: .5;
+}
+
+// password show and hide style for eye icon
+.showHideIcon {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  color: var(--bs-gray);
+  background: transparent;
+  border: 0;
+}

@@ -19,9 +19,13 @@
       [label]="'Password'"
       [classLabel]="'form-label'"
       [inputClass]="'form-control'"
-      [type]="'password'"
+      [type]="hide()?'password': 'text'"
       [formControl]="$any(loginForm.controls['password'])"
-      ></app-input-form-field>
+      >
+        <a type="button" class="showHideIcon" (click)="clickEvent($event)">
+               <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </a>
+    </app-input-form-field>
       {{responseMessage}}
    </div>
     </mat-card-content>

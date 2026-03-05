@@ -7,3 +7,8 @@ export  interface forgotPasswordData{
     userName: string,
     email:string
 }
+
+export  interface changePasswordData{
+    newPassword: string,
+    oldPassword:string
+}
