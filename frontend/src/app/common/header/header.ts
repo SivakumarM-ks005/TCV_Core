@@ -8,6 +8,7 @@ import { ConfirmationPopup } from '../../dialog/confirmation-popup/confirmation-
 import { Router } from '@angular/router';
 import { DialogRef } from '@angular/cdk/dialog';
 import { ChangePassword } from '../../dialog/change-password/change-password';
+import { Signup } from '../../dialog/signup/signup';
 @Component({
   selector: 'app-header',
   imports: [MatToolbarModule,
@@ -42,4 +43,16 @@ export class Header {
     dialogConfig.width= "500px"
     this.dialog.open(ChangePassword, dialogConfig)
   }
+
+signup() {
+  const dialogConfig = this.dialog.open(Signup, {
+    width: '60%',
+    height: '70%',
+    maxWidth: '100vw',
+    maxHeight: '100vh',
+    position: {
+      top: 'calc(3vw + 20px)'
+    }
+  });
+}
 }

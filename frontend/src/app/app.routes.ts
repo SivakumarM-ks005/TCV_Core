@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { RouteGuard } from './services/route-guard';
 
 export const routes: Routes = [
     {
@@ -16,7 +17,11 @@ export const routes: Routes = [
        children:[
         {
             path:'dashboard',
-            loadComponent: ()=> import('./dashboard/dashboard').then(n => n.Dashboard)
+            loadComponent: ()=> import('./dashboard/dashboard').then(n => n.Dashboard),
+            canActivate:[RouteGuard],
+            data:{
+                expectedRole:['admin','user']
+            }
         }
     ]
     },

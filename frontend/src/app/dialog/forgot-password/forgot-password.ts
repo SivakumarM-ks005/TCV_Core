@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, PatternValidator, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,  ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputFormField } from '../../reusable/input-form-field/input-form-field';
 import {
   MAT_DIALOG_DATA,
