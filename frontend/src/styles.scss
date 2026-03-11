@@ -1,1 +1,302 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< Updated upstream
+=======
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+//  ----------------- common styles ------------------------
+.mid-spacer {
+  flex-grow: 1;
+}
+
+.footer,
+.mat-toolbar-single-row {
+  z-index: 100;
+}
+
+//  ----------------- Layout ------------------------
+.mat-drawer-container {
+  height: calc(100% - 90px);
+}
+
+.mat-drawer-content {
+  padding: 15px;
+}
+
+// --------------- Sidebar and  menu -------------
+
+.mat-drawer-side {
+  background: var(--bs-primary);
+  width: 230px;
+  border-radius: 0 !important;
+  // padding: 5px 0px 10px;
+}
+
+.mdc-list {
+  padding: 0 !important;
+
+  .mdc-list-item {
+    padding: 0 10px !important;
+    height: 40px !important;
+
+    &__primary-text {
+      display: flex !important;
+      align-items: center !important;
+      font-size: .9rem !important;
+
+      .mat-icon {
+        padding-right: 6px;
+      }
+
+    }
+
+    &:hover {
+      border-radius: 0 !important;
+    }
+  }
+}
+
+.mat-expansion-panel {
+  background-color: var(--bs-transparent) !important;
+  box-shadow: var(--bs-transparent) !important;
+
+  &-header {
+    padding: 0 10px !important;
+    height: 2.5rem !important;
+
+    &-title {
+      font-size: .8rem;
+
+      span {
+        padding-left: 5px;
+      }
+    }
+  }
+
+  &-body {
+    padding: 0 10px !important;
+  }
+
+  &-spacing {
+    margin: 0 !important;
+  }
+}
+
+
+
+// --------------- login -------------
+.login-page {
+  height: 100vh;
+  width: 100%;
+  background: var(--bs-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  h2 {
+    font-size: 24px;
+  }
+
+  .mat-mdc-raised-button {
+    background: var(--bs-blue) !important;
+    width: 100%;
+    border-radius: 5px;
+    color: var(--bs-white) !important;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  mat-card {
+    min-width: 400px;
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    border-radius: 5px !important;
+    background-color: var(--bs-white);
+    box-shadow: 0px 8px 8px var(--bs-dark);
+  }
+
+  .mat-mdc-card-header {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    h2 {
+      color: var(--bs-blue);
+      font-weight: 500;
+      display: block;
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// --------------- form fields -------------
+.mat-mdc-form-field {
+
+  .mdc-text-field--outlined {
+    padding: 0 12px !important;
+
+    .mat-mdc-form-field-infix {
+      padding: 12px 0 !important;
+      min-height: 30px !important
+    }
+  }
+  .mat-mdc-select {
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+  .mat-mdc-form-field-error-wrapper {
+    padding: 0 4px !important;
+  }
+  .form-control {
+    padding: 0 !important;
+  }
+  .mat-mdc-form-field-required-marker{
+    color: red !important;
+  }
+}
+
+
+
+// --------------- Grid value -------------
+
+.grid-1-col {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr);
+  gap: 10px;
+}
+
+.grid-2-col {
+  display: grid;
+  grid-template-columns:  repeat(2, minmax(300px, 1fr));
+  gap: 10px;
+}
+
+
+// ---------snack bar ----
+ .black-snackbar {
+  background: #000000;
+  color: white;
+  font-size: 12px;
+}
+
+.green-snackbar {
+  background: green;
+  color: white;
+  font-size: 12px;
+}
+
+
+// --------------- dialog value -------------
+
+.mat-mdc-dialog-container {
+  border-radius: 10px;
+
+  .mat-mdc-dialog-title {
+    display: flex;
+    align-items: center;
+    background: var(--bs-blue);
+    height: 40px;
+    line-height: 30px;
+    padding: 20px;
+    font-size: 18px !important;
+    text-shadow: 1px 1px 15px #ffffff;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .mat-mdc-dialog-surface {
+    border-radius: 10px !important;
+  }
+
+  .mat-mdc-dialog-actions {
+    color: var(--bs-white);
+    flex-wrap: nowrap !important;
+    justify-content: space-between;
+    min-height: 20px !important;
+    padding: 20px !important;
+
+    &::after,
+    &::before {
+      display: none !important;
+    }
+  }
+
+}
+
+// --------------- Action area -------------
+
+.action-footer {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+// ---------------button generic style -------------
+
+button {
+  font-size: 1rem;
+  min-width: 150px !important;
+  padding: 8px 16px;
+  border-radius: 5px !important;
+  border: 0;
+  box-shadow: none;
+  outline: 0;
+  color: var(--bs-white);
+}
+
+.btn-no {
+  background-color: var(--bs-gray);
+}
+
+.btn-yes {
+  background-color: var(--bs-primary);
+}
+
+.btn-disabled {
+  opacity: .5;
+}
+
+// password show and hide style for eye icon
+.showHideIcon {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  color: var(--bs-gray);
+  background: transparent;
+  border: 0;
+}
+>>>>>>> Stashed changes
