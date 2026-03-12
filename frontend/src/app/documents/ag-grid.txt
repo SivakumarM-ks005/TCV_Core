@@ -1,0 +1,104 @@
+npm install ag-grid-community ag-grid-angular
+
+import { AgGridModule } from 'ag-grid-angular';
+
+@NgModule({
+  imports: [
+    AgGridModule
+  ]
+})
+export class AppModule {}
+
+export interface User {
+  userId: number;
+  userName: string;
+  password: string;
+  email: string;
+  contactNumber: string;
+  firstName: string;
+  lastName: string;
+  dateRegistered: string;
+  lastLogin: string;
+  role: string;
+  status: string;
+}
+
+import { Component } from '@angular/core';
+import { ColDef } from 'ag-grid-community';
+
+@Component({
+  selector: 'app-user-grid',
+  templateUrl: './user-grid.component.html'
+})
+export class UserGridComponent {
+
+  columnDefs: ColDef[] = [
+    { field: 'userId', headerName: 'ID', sortable: true, filter: true },
+    { field: 'userName', headerName: 'Username', sortable: true, filter: true },
+    { field: 'email', headerName: 'Email', filter: true },
+    { field: 'contactNumber', headerName: 'Contact' },
+    { field: 'firstName', headerName: 'First Name' },
+    { field: 'lastName', headerName: 'Last Name' },
+    { field: 'dateRegistered', headerName: 'Registered Date' },
+    { field: 'lastLogin', headerName: 'Last Login' },
+    { field: 'role', headerName: 'Role' },
+    { field: 'status', headerName: 'Status' }
+  ];
+
+  rowData = [
+    {
+      userId: 1,
+      userName: 'admin',
+      email: 'admin@mail.com',
+      contactNumber: '9999999999',
+      firstName: 'System',
+      lastName: 'Admin',
+      dateRegistered: '2025-01-10',
+      lastLogin: '2026-03-11 10:30:00',
+      role: 'ADMIN',
+      status: 'ACTIVE'
+    },
+    {
+      userId: 2,
+      userName: 'john',
+      email: 'john@mail.com',
+      contactNumber: '8888888888',
+      firstName: 'John',
+      lastName: 'Doe',
+      dateRegistered: '2025-05-12',
+      lastLogin: '2026-03-10 08:00:00',
+      role: 'USER',
+      status: 'ACTIVE'
+    }
+  ];
+
+}
+
+<ag-grid-angular
+  class="ag-theme-alpine"
+  style="width: 100%; height: 500px;"
+  [columnDefs]="columnDefs"
+  [rowData]="rowData"
+  [pagination]="true"
+  [paginationPageSize]="10">
+</ag-grid-angular>
+
+receive the error
+
+npm error code SELF_SIGNED_CERT_IN_CHAIN npm error errno SELF_SIGNED_CERT_IN_CHAIN npm error request to https://registry.npmjs.org/ag-grid-angular failed, reason: self-signed certificate in certificate chain npm error A complete log of this run can be found in: C:\Users\smani\AppData\Local\npm-cache\_logs\2026-03-12T07_21_59_443Z-debug-0.log
+reason
+npm ERR! code SELF_SIGNED_CERT_IN_CHAIN
+npm ERR! request to https://registry.npmjs.org/... failed
+
+means Node/NPM does not trust the SSL certificate when connecting to the npm registry (registry.npmjs.org). This usually happens in:
+
+Corporate networks with proxy/firewall
+
+Antivirus HTTPS scanning
+
+Custom company certificates
+
+npm config set strict-ssl false
+npm install ag-grid-angular
+npm cache clean --force
+npm config set registry https://registry.npmjs.org/

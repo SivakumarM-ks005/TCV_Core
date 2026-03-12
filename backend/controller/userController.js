@@ -2,7 +2,69 @@ const express = require('express');
 const connection = require('../connection');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
+
+const signup = async(req, res)=>{
+    const user = req.body;
+       console.log("signup",user)
+    query = "SELECT * FROM user where userName=? or email=?";
+    connection.query( query, [ user.userName, user.email],(error, results )=>{
+        try {
+            if(results.length > 0){
+                const existing = results[0];
+                //   console.log("existing",existing)
+                if(existing.userName === user.userName && existing.email === user.email){
+                    return res.status(400).json({
+                        message: "User Name and Email is already exists"
+                    })
+                }else if(existing.userName === user.userName){
+                    return res.status(400).json({
+                        message:"User Name is already exists"
+                    })
+                }else if( existing.email === user.email){
+                    return res.status(400).json({
+                        message:"Email is already exists"
+                    })
+                }
+            }
+            if(results.length <=0){
+                query = "INSERT INTO user (userName, password, email, contactNumber, firstName, lastName, dateRegistered, lastLogin, role, Status) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                connection.query(query,[user.userName, user.password, user.email, user.contactNumber, user.firstName, user.lastName, user.dateRegistered, user.lastLogin, user.role, user.Status],(error, results)=>{
+                    try {
+                        return res.status(200).json({
+                            message:"User details registered Successfully"
+                        })
+                    } catch (error) {
+                        return res.status(500).json();
+                    }
+                })
+            }else {
+                return res.status(400).json({
+                     message: "Email or User Name already exists"
+                })
+            }
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+    })
+}
+
+const getAllUser = async(req, res)=>{
+    const user = req.body;
+    query ="SELECT * FROM user WHERE role='admin'";
+    connection.query(query,(error, results)=>{
+        try {
+          if(results <=0){
+            return res.status(400).json({
+                message:"No records found"
+            })
+          }
+          return res.Status(200).json(results)
+        } catch (error) {
+            return res.status(500).json(error);
+        }
+    })
+}
 
 const login = async (req, res) => {
     const user = req.body;
@@ -83,7 +145,7 @@ const forgotPassword = async (req, res) => {
 const changePassword = async (req, res) => {
     const user = req.body;
     const userName = res.locals.userName;
-      console.log("test",res.locals.userName, user)
+   
     query = "SELECT * FROM user where userName=? and password=?"
     connection.query(query, [userName,user.oldPassword], (error, results) => {
         try {
@@ -113,4 +175,4 @@ const changePassword = async (req, res) => {
         }
     })
 }
-module.exports = { login, forgotPassword,changePassword }
+module.exports = { login, forgotPassword,changePassword, signup, getAllUser }

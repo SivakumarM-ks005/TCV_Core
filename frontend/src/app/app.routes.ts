@@ -22,6 +22,14 @@ export const routes: Routes = [
             data:{
                 expectedRole:['admin','user']
             }
+        },
+         {
+            path:'users',
+            loadComponent: ()=> import('./user/user-list/user-list').then(n => n.UserList),
+            canActivate:[RouteGuard],
+            data:{
+                expectedRole:['admin']
+            }
         }
     ]
     },
