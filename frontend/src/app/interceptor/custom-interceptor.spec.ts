@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpInterceptorFn } from '@angular/common/http';
+import { HttpInterceptorFn } from '@angular/shared/http';
 
 import { customInterceptor } from './custom-interceptor';
 

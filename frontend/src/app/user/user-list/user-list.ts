@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Dialog } from '@angular/cdk/dialog';
 import { Signup } from '../../dialog/signup/signup';
+import { ActionMenu } from '../../reusable/list-action-menu';
 ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-user-list',
@@ -81,26 +82,31 @@ export class UserList {
     { field: "contactNumber", headerName: 'Contact #', maxWidth: 120, },
     { field: "role", headerName: 'Role', maxWidth: 100, },
     { field: "Status", headerName: 'Status', maxWidth: 70, },
-    { headerName: "Action", maxWidth: 120, cellRenderer: '', filter: false, sortable: false },
-    // {
-    //   field: "action",
-    //   headerName: "Action", filter: false, floatingFilter: false,
-    //   cellStyle: { textAlign: 'center' },
-    //   cellRenderer: (params: ICellRendererParams) => {
-    //     return `
-    //         <a>
-    //           <span class="material-icons-outlined blue pe-1">visibility</span>            
-    //         </a>
-    //         <a >
-    //           <span class="material-icons-outlined blue pe-1">browser_updated</span>            
-    //         </a>
-    //         <a >
-    //           <span class="material-icons-outlined blue">verified</span>            
-    //         </a>
-    //         `;
-    //   },
-    // }
+    {
+  headerName: "Action",
+  maxWidth: 120,
+  cellRenderer: ActionMenu,
+  cellRendererParams: {
+    actions: [
+      { label: 'View', action: (row:any) => this.view(row) },
+      { label: 'Edit', action: (row:any) => this.edit(row) },
+      { label: 'Delete', action: (row:any) => this.delete(row) }
+    ]
+  },
+  filter: false,
+  sortable: false
+}
   ];
+view(row:any){
+  console.log("View", row);
+}
 
+edit(row:any){
+  console.log("Edit", row);
+}
+
+delete(row:any){
+  console.log("Delete", row);
+}
 
 }
